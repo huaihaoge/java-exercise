@@ -1,55 +1,28 @@
 package com.haochh.chen.exerise.day2;
 
-import javafx.util.Pair;
+
+import java.util.Arrays;
 
 public class binaryTree {
 
-    /*
-    树的结构示例：
-              1
-            /   \
-          2       3
-         / \     / \
-        4   5   6   7
-    */
-
     public static void main(String[] args) {
 
-        int[] binaryTree = new int[]{1, 2, 3, 4, 5, 6, 7, 8};
+        int[] preOrder = new int[]{3, 9, 20, 15, 7};
 
-        printPreBinaryTree(binaryTree);
-        printMidBinaryTree(binaryTree);
+        int[] midOrder = new int[]{9, 3, 15, 20, 7};
 
-    }
-
-    private static void printPreBinaryTree(int[] preOrder) {
-
-        Pair<Integer, Integer> treeInfo = calcTreeInfo(preOrder);
-
-        for (int i = 1; i <= treeInfo.getKey() * 2 - 1; i++) {
-            if (i % 2 == 1) {
-
-
-            }
-        }
-
-
-        System.out.println(treeInfo.getKey());
-        System.out.println(treeInfo.getValue());
-
+        buildTree(preOrder, midOrder);
 
     }
 
-    private static void printMidBinaryTree(int[] midOrder) {
-
-
+    public static TreeNode buildTree(int[] preorder, int[] inorder) {
+        if(preorder.length==0) return null;
+        int val = preorder[0], i=0;
+        TreeNode node = new TreeNode(val);
+        while(inorder[i]!=val) i++;
+        node.left = buildTree(Arrays.copyOfRange(preorder,1,i+1),Arrays.copyOfRange(inorder,0,i));
+        node.right = buildTree(Arrays.copyOfRange(preorder,i+1,preorder.length),Arrays.copyOfRange(inorder,i+1,inorder.length));
+        return node;
     }
-
-    private static Pair<Integer, Integer> calcTreeInfo(int[] tree) {
-        double treeHeight = Math.ceil(Math.log(tree.length + 1) / Math.log(2));
-        double treeWidth = Math.pow(2.0, treeHeight);
-        return new Pair<Integer, Integer>((int) treeHeight, (int) treeWidth - 1);
-    }
-
 
 }
