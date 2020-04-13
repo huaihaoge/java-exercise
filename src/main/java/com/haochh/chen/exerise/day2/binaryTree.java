@@ -45,7 +45,7 @@ public class binaryTree {
     }
 
     private static Pair<Integer, Integer> calcTreeInfo(int[] tree) {
-        double treeHeight = Math.ceil(Math.log((tree.length + 1) / Math.log(2)));
+        double treeHeight = Math.ceil(Math.log(tree.length + 1) / Math.log(2));
         double treeWidth = Math.pow(2.0, treeHeight);
         return new Pair<Integer, Integer>((int) treeHeight, (int) treeWidth - 1);
     }
