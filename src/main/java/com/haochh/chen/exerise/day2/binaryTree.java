@@ -26,8 +26,9 @@ public class binaryTree {
 
         Pair<Integer, Integer> treeInfo = calcTreeInfo(preOrder);
 
-        for (int i = 0; i < treeInfo.getKey(); i++) {
+        for (int i = 1; i <= treeInfo.getKey() * 2 - 1; i++) {
             if (i % 2 == 1) {
+
 
             }
         }
