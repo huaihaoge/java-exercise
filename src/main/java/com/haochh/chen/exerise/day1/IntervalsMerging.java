@@ -35,7 +35,6 @@ public class IntervalsMerging {
                 intervals = sort(tmpArray);
                 i = i - 1;
             } else {
-
                 continue;
             }
         }
