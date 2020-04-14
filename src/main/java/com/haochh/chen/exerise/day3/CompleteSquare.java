@@ -11,9 +11,9 @@ public class CompleteSquare {
 
     public static void main(String[] args) {
 
-        System.out.println("args = " + sqrt(999));
+        System.out.println("args = " + sqrt(12));
 
-        System.out.println("args = " + numSquares(999));
+        System.out.println("args = " + calc(12));
     }
 
 
@@ -32,16 +32,22 @@ public class CompleteSquare {
 
     }
 
+    private static int calc(int x) {
 
-    private static int numSquares(int n) {
-        int res = n, num = 2;
-        while (num * num <= n) {
-            int a = n / (num * num), b = n % (num * num);
-            res = min(res, a + numSquares(b));
+        int res = x;
+        int num = 2;
+
+        while (num * num < x) {
+            int a = x / (num * num);
+            int b = x % (num * num);
+            res = min(res , a + calc(b));
             ++num;
         }
+
         return res;
     }
+
+
 }
 
 
